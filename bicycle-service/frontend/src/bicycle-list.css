@@ -1,0 +1,46 @@
+/* src/components/BicycleList.css */
+
+.bicycle-list-container {
+    background-color: #f4f4f9; /* Light background color */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+  }
+  
+  h2 {
+    color: #2c3e50; /* Dark color for the header */
+    text-align: center;
+  }
+  
+  .bicycle-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .bicycle-item {
+    background-color: #fff; /* White background for each bicycle item */
+    padding: 15px;
+    margin: 10px 0; /* Spacing between items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for items */
+  }
+  
+  .bicycle-item p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  .bicycle-item strong {
+    color: #2980b9; /* Blue color for the labels */
+  }
+
+  /* Add this to your bicycle-list.css */
+
+.bicycle-item:hover {
+  background-color: #f0f0f0; /* Grey background on hover */
+}
+
+
+  
