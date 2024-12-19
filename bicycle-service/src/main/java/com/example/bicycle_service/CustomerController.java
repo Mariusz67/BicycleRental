@@ -1,6 +1,7 @@
 package com.example.bicycle_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,10 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
+        if (customerService.isEmailAlreadyInUse(customer.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error email already exists");
+        }
         Customer savedCustomer = customerService.saveCustomer(customer);
         return ResponseEntity.ok(savedCustomer); // Return saved customer as a response
     }
@@ -50,7 +54,7 @@ public class CustomerController {
         if (existingCustomer != null && existingCustomer.getPassword().equals(loginRequest.getPassword())) {
             return ResponseEntity.ok(existingCustomer); // Login successful
         }
-        return ResponseEntity.status(404).body("Invalid email or password"); // Invalid credentials
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid email or password"); // check response if 404
     }
 
 

@@ -11,7 +11,13 @@ const UserRegistration = () => {
   const handleRegister = () => {
     axios.post('http://localhost:8081/customers', { firstName, lastName, email, phone, password })
       .then(() => alert('User registered successfully!'))
-      .catch((error) => console.error('Error registering user:', error));
+      .catch((error) => {
+          if (error.response && error.response.status === 409) {
+              alert('Error: Email is already in use');
+          } else {
+              console.error('Error registering user:', error);
+          }
+      });
   };
 
   return (

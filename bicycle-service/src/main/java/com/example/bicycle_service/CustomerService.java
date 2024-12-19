@@ -31,5 +31,9 @@ public class CustomerService {
     public Customer findByEmail(String email) {
         return customerRepository.findByEmail(email);  // Call repository method to find by email
     }
+
+    public boolean isEmailAlreadyInUse(String email) {
+        return customerRepository.existsByEmail(email);
+    }
 }
 
